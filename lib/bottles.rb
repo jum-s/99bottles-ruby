@@ -23,19 +23,23 @@ class Verse
   end
 
   def show
-    return NO_CONTAINER if @number.zero?
-    quantity + container + " of beer on the wall, " +
-    quantity + container + " of beer.\n" +
-    "Take " + pronoun + " down and pass it around, " +
-    quantity(@number - 1) + container(@number - 1) + " of beer on the wall.\n"
+    if @number.zero?
+      quantity.capitalize + container + " of beer on the wall, " +
+      quantity + container + " of beer.\n" +
+      "Go to the store and buy some more, " +
+      "99 bottles of beer on the wall.\n"
+    else
+      quantity + container + " of beer on the wall, " +
+      quantity + container + " of beer.\n" +
+      "Take " + pronoun + " down and pass it around, " +
+      quantity(@number - 1) + container(@number - 1) + " of beer on the wall.\n"
+    end
   end
 
   private
 
-  NO_CONTAINER = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
-
   def quantity number=@number
-    case  number
+    case number
     when 0
       "no more"
     when 6
@@ -46,7 +50,7 @@ class Verse
   end
 
   def container number=@number
-    case  number
+    case number
     when 0
       " bottles"
     when 1
