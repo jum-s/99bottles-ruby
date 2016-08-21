@@ -24,19 +24,27 @@ class Verse
 
   def show
     if @number.zero?
-      quantity.capitalize + container + " of beer on the wall, " +
-      quantity + container + " of beer.\n" +
-      "Go to the store and buy some more, " +
+      "#{quantity.capitalize} #{container} of beer on the wall, " +
+      "#{quantity} #{container} of beer.\n" +
+      "#{action}, " +
       "99 bottles of beer on the wall.\n"
     else
-      quantity + container + " of beer on the wall, " +
-      quantity + container + " of beer.\n" +
-      "Take " + pronoun + " down and pass it around, " +
-      quantity(@number - 1) + container(@number - 1) + " of beer on the wall.\n"
+      "#{quantity.capitalize} #{container} of beer on the wall, " +
+      "#{quantity} #{container} of beer.\n" +
+      "#{action}, " +
+      "#{quantity(@number - 1)} #{container(@number - 1)} of beer on the wall.\n"
     end
   end
 
   private
+  def action number=@number
+    case number
+    when 0
+      "Go to the store and buy some more"
+    else
+      "Take " + pronoun + " down and pass it around"
+    end
+  end
 
   def quantity number=@number
     case number
@@ -52,13 +60,13 @@ class Verse
   def container number=@number
     case number
     when 0
-      " bottles"
+      "bottles"
     when 1
-      " bottle"
+      "bottle"
     when 6
-      " six-pack"
+      "six-pack"
     else
-      " bottles"
+      "bottles"
     end
   end
 
