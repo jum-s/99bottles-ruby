@@ -23,26 +23,29 @@ class Verse
   end
 
   def show
-    if @number.zero?
-      "#{quantity.capitalize} #{container} of beer on the wall, " +
-      "#{quantity} #{container} of beer.\n" +
-      "#{action}, " +
-      "99 bottles of beer on the wall.\n"
-    else
-      "#{quantity.capitalize} #{container} of beer on the wall, " +
-      "#{quantity} #{container} of beer.\n" +
-      "#{action}, " +
-      "#{quantity(@number - 1)} #{container(@number - 1)} of beer on the wall.\n"
-    end
+    "#{quantity.capitalize} #{container} of beer on the wall, " +
+    "#{quantity} #{container} of beer.\n" +
+    "#{action}, " +
+    "#{quantity(minus_one)} #{container(minus_one)} of beer on the wall.\n"
   end
 
   private
+
   def action number=@number
     case number
     when 0
       "Go to the store and buy some more"
     else
       "Take " + pronoun + " down and pass it around"
+    end
+  end
+
+  def minus_one
+    case @number
+    when 0
+      99
+    else
+      @number - 1
     end
   end
 
