@@ -26,7 +26,7 @@ class Verse
     return NO_CONTAINER if @number.zero?
     container + " of beer on the wall, " +
     container + " of beer.\n" +
-    take_one_or_down + " and pass it around, " +
+    "Take " + pronoun + "down and pass it around, " +
     container(@number - 1) + " of beer on the wall.\n"
   end
 
@@ -47,7 +47,7 @@ class Verse
     end
   end
 
-  def take_one_or_down
-    @number == 1 ? "Take it down" : "Take one down"
+  def pronoun
+    @number == 1 ? "it" : "one"
   end
 end
