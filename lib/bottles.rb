@@ -1,11 +1,11 @@
 class Bottles
   def verse number
-    Bottle.new(number).show
+    Verse.new(number).show
   end
 
   def verses max, min
     max.downto(min).map do |num|
-      Bottle.new(num).show
+      Verse.new(num).show
     end.join("\n")
   end
 
@@ -17,13 +17,13 @@ class Bottles
 
 end
 
-class Bottle
+class Verse
   def initialize number
     @number = number
   end
 
   def show
-    return NO_BOTTLES if @number.zero?
+    return NO_CONTAINER if @number.zero?
     container + " of beer on the wall, " +
     container + " of beer.\n" +
     take_one_or_down + " and pass it around, " +
@@ -32,7 +32,7 @@ class Bottle
 
   private
 
-  NO_BOTTLES = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
+  NO_CONTAINER = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
 
   def container number=@number
     case  number
