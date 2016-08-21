@@ -24,22 +24,24 @@ class Bottle
 
   def show
     return NO_BOTTLES if @number.zero?
-    bottles + " of beer on the wall, " +
-    bottles + " of beer.\n" +
+    container + " of beer on the wall, " +
+    container + " of beer.\n" +
     take_one_or_down + " and pass it around, " +
-    bottles(@number - 1) + " of beer on the wall.\n"
+    container(@number - 1) + " of beer on the wall.\n"
   end
 
   private
 
   NO_BOTTLES = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
 
-  def bottles number=@number
+  def container number=@number
     case  number
     when 0
       "no more bottles"
     when 1
       "#{number} bottle"
+    when 6
+      "1 six-pack"
     else
       "#{number} bottles"
     end
