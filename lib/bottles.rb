@@ -35,9 +35,10 @@ class Bottle
   NO_BOTTLES = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
 
   def bottles number=@number
-    if number == 0
+    case  number
+    when 0
       "no more bottles"
-    elsif number == 1
+    when 1
       "#{number} bottle"
     else
       "#{number} bottles"
